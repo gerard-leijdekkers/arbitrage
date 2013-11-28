@@ -1,0 +1,16 @@
+
+%table
+  %thead
+    %tr
+      %th LTC
+      %th BTC-e
+      %th Vircurex
+  %tbody
+    %tr
+      %th{scope: :row}Buy
+      %td= @rates.btc[:buy]
+      %td= @rates.vircurex[:buy]
+    %tr
+      %th{scope: :row}Sell
+      %td= @rates.btc[:sell]
+      %td= @rates.vircurex[:sell]
