@@ -1,5 +1,6 @@
 class RatesController < ApplicationController
   def index
-    @rates = Rates.new.fetch
+    @btc = Btc.new
+    @vircurex = Vircurex.new
   end
 end
