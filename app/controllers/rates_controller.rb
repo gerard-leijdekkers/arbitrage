@@ -1,6 +1,8 @@
 class RatesController < ApplicationController
   def index
-    @btc = Btc.new
-    @vircurex = Vircurex.new
+    @rates = {}
+    @rates['BTC-e']    = Btc.new
+    @rates['Vircurex'] = Vircurex.new
+    @rates['Bter']     = Bter.new
   end
 end

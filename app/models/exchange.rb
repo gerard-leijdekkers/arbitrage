@@ -4,4 +4,8 @@ class Exchange
   
   attr_accessor :ticker
   
+  def fee
+    0.2
+  end
+  
 end

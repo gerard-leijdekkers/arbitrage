@@ -1,40 +1,12 @@
-- exchanges = %w(btc vircurex bter)
-
 %table
   %thead
     %tr
       %th BTC/LTC
-      - exchanges.each do |exchange|
+      - @rates.each_key do |exchange|
         %th= exchange
   %tbody
-    - exchanges.each do |buy_exchange|
+    - @rates.each do |exchange, buy_rate|
       %tr
-        %th{scope: :row}= buy_exchange
-        - exchanges.each do |sell_exchange|
-          %td= (())
-    %tr
-      %th{scope: :row}BTC-e
-      %td= ((@btc.sell - @btc.buy) / @btc.buy * 100).round(2)
-      %td= ((@vircurex.sell - @btc.buy) / @btc.buy * 100).round(2)
-    %tr
-      %th{scope: :row}Vircurex
-      %td= ((@btc.sell - @vircurex.buy) / @vircurex.buy * 100).round(2)
-      %td= ((@vircurex.sell - @vircurex.buy) / @vircurex.buy * 100).round(2)
-      
-      
-
-%table
-  %thead
-    %tr
-      %th LTC
-      %th BTC-e
-      %th Vircurex
-  %tbody
-    %tr
-      %th{scope: :row}Sell
-      %td= @btc.sell
-      %td= @vircurex.sell
-    %tr
-      %th{scope: :row}Buy
-      %td= @btc.buy
-      %td= @vircurex.buy
+        %th{scope: :row}= exchange
+        - @rates.each do |exchange, sell_rate|
+          %td= arbitrage_profit(buy_rate.buy, sell_rate.sell, buy_rate.fee)

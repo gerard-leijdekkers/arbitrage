@@ -6,8 +6,9 @@ class Vircurex < Exchange
   def initialize
     result = JSON.parse(open(API).read)
     
-    self.buy  = result["highest_bid"].to_f
-    self.sell = result["lowest_ask"].to_f
+    # We request LTC_BTC but need BTC_LTC
+    self.sell = result["highest_bid"].to_f
+    self.buy  = result["lowest_ask"].to_f
   end
 
 end

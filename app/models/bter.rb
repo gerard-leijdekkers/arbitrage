@@ -6,8 +6,9 @@ class Bter < Exchange
   def initialize
     result = JSON.parse(open(API).read)
     
-    self.buy  = result["buy"].to_f
-    self.sell = result["sell"].to_f
+    # We request LTC_BTC but need BTC_LTC
+    self.buy  = result["sell"].to_f
+    self.sell = result["buy"].to_f
   end
 
 end
