@@ -8,5 +8,6 @@ class RatesController < ApplicationController
     @rates['Cryptsy']      = Cryptsy.new
     @rates['Crypto-trade'] = CryptoTrade.new
     @rates['Kraken']       = Kraken.new
+    @rates['Coins-E']      = CoinsE.new
   end
 end
