@@ -7,5 +7,6 @@ class RatesController < ApplicationController
     @rates['fxbtc']        = Fxbtc.new
     @rates['Cryptsy']      = Cryptsy.new
     @rates['Crypto-trade'] = CryptoTrade.new
+    @rates['Kraken']       = Kraken.new
   end
 end
