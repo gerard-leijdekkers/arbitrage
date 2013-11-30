@@ -4,6 +4,6 @@ module ApplicationHelper
   end
   
   def print_arbitrage_profit(profit, buy, sell)
-    "#{profit}% (b: #{buy} - s:#{sell})"
+    "#{profit}% (b:#{(buy * 1000).round(2)}/s:#{(sell * 1000).round(2)})"
   end
 end
