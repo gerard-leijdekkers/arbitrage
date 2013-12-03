@@ -9,5 +9,10 @@
       %tr
         %th{scope: :row}= exchange
         - @rates.each do |exchange, sell_rate|
-          - profit = arbitrage_profit(buy_rate.buy, sell_rate.sell, buy_rate.fee)
-          %td{bgcolor: (profit > 0) ? 'green' : 'red'}= print_arbitrage_profit(profit, buy_rate.buy, sell_rate.sell)
+          - if buy_rate && sell_rate
+            - profit = arbitrage_profit(buy_rate.buy, sell_rate.sell, buy_rate.fee)
+          
+          - if profit
+            %td{bgcolor: (profit > 0) ? 'green' : 'red'}= print_arbitrage_profit(profit, buy_rate.buy, sell_rate.sell)
+          -else
+            %td{bgcolor: 'gray'} N/A
